@@ -16,21 +16,21 @@ def entropy():
     if re.search(f"{[string.punctuation]}", password):
         res += len(string.punctuation)
     entropy = log2(res**L)
-    lab2.config(text=f"Энтропия пароля {entropy}")
+    lab2.config(text=f"Password Entropy: {entropy}")
 
 
 if __name__ == "__main__":
     root = Tk()
-    root.title("Проверка энтропии пароля")
+    root.title("Password Entropy Check")
     root.resizable(width=False, height=False)
     root.geometry("300x250")
-    lab = Label(text="Введите пароль", font=40)
+    lab = Label(text="Enter the password", font=40)
     lab.pack(pady=5)
     e = Entry(root, show='*')
     e.pack(pady=5)
-    lab2 = Label(text=f"Энтропия пароля: ")
+    lab2 = Label(text=f"Password Entropy: ")
     lab2.pack(pady=5)
-    button = Button(root, text="Проверить пароль", font=40, command=entropy)
+    button = Button(root, text="CHECK", font=40, command=entropy)
     button.pack(side=BOTTOM, pady=40)
     root.mainloop()
     
