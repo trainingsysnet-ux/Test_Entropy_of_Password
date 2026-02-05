@@ -4,7 +4,6 @@ import string
 from tkinter import *
 
 
-
 def entropy(password):
     res = 0
     L = len(password)

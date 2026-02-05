@@ -13,7 +13,3 @@ def generator():
     #         return password
     #     else:
     #         continue
-
-    
-
-print(generator())

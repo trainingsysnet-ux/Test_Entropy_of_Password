@@ -28,5 +28,4 @@ def GUI_tkinter():
     button2.pack(side=BOTTOM)
     lab3 = Label(text=f"New password:   Entropy: ")
     lab3.pack(side=BOTTOM)
-
     root.mainloop()
