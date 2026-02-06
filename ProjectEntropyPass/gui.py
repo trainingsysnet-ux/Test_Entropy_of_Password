@@ -13,7 +13,8 @@ def GUI_tkinter():
         lab2.config(text=f"Password Entropy: {round(new_value, 2)} bits")
     
     def generate_password():
-        new_pass = generator()
+        length = int(length_entry.get())
+        new_pass = generator(length)
         nonlocal corrent_password
         corrent_password = new_pass
         pass_entropy = entropy(new_pass)
@@ -27,6 +28,19 @@ def GUI_tkinter():
         root.clipboard_append(corrent_password)
         print("Copy complete!")
 
+    def add_to_length():
+        i = int(length_entry.get())
+        length.set(i + 1)
+
+    def del_from_length():
+        i = int(length_entry.get())
+        if i <= 0:
+            length.set(i-0)
+        else:
+            length.set(i-1)
+
+
+
     root = Tk()
 
     # X and Y center monitor
@@ -36,7 +50,7 @@ def GUI_tkinter():
     window_height = 350
     x = (screen_width // 2) - (window_width // 2)  
     y = (screen_height // 2) - (window_height // 2) 
-    
+
     root.title("Password Entropy Check")
     root.resizable(width=False, height=False)
     root.geometry(f"{window_width}x{window_height}+{x}+{y}")
@@ -66,6 +80,19 @@ def GUI_tkinter():
     lab3 = Label(text=f"Create a new password for you! :)")
     lab3.pack(side=BOTTOM)
 
+    # Added length
+    length = IntVar()
+    length.set(0)
+    length_entry = Entry(root, textvariable=length)
+    length_entry.pack()
+
+    # Button for length
+    Button_add_length = Button(root, text=f"+", command=add_to_length)
+    Button_add_length.pack()
+
+    buttom_del_from_length = Button(root, text="-", command=del_from_length)
+    buttom_del_from_length.pack()
+    
 
 
     root.mainloop()
